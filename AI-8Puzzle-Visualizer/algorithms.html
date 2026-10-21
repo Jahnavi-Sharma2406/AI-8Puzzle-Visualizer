@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Algorithms | 8-Puzzle Solver</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .algorithm-card {
+            background: white;
+            border: 1px solid #dedfd7;
+            border-radius: 12px;
+            padding: 24px;
+            height: 100%;
+        }
+        .algorithm-card h2 {
+            font-size: 1.35rem;
+            margin-bottom: 12px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e8ebff;
+            color: #303f98;
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: .8rem;
+            margin-bottom: 12px;
+        }
+        .page-header {
+            padding: 50px 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">8-Puzzle Solver</a>
+            <a class="btn btn-outline-light btn-sm" href="solver.html">Open Solver</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="page-header">
+            <p style="color:#4051b5;font-weight:bold;">REFERENCE GUIDE</p>
+            <h1 class="fw-bold">Search Algorithms</h1>
+            <p>Six approaches to finding a path from the initial state to the goal state.</p>
+        </header>
+
+        <div class="row g-4 py-4">
+            <div class="col-md-6">
+                <article class="algorithm-card">
+                    <span class="tag">Uninformed Search</span>
+                    <h2>Breadth-First Search (BFS)</h2>
+                    <p>Explores all states at one depth before moving to the next depth.</p>
+                    <p><strong>Principle:</strong> Uses a FIFO queue.</p>
+                    <p><strong>Advantages:</strong> Complete and finds a shortest path when all moves have equal cost.</p>
+                    <p><strong>Limitations:</strong> Requires large amounts of memory.</p>
+                    <p><strong>Completeness:</strong> Yes.</p>
+                    <p><strong>Optimality:</strong> Yes, for equal step costs.</p>
+                    <p><strong>Complexity:</strong> Time and space O(b<sup>d</sup>).</p>
+                </article>
+            </div>
+
+            <div class="col-md-6">
+                <article class="algorithm-card">
+                    <span class="tag">Uninformed Search</span>
+                    <h2>Depth-First Search (DFS)</h2>
+                    <p>Follows one branch as deeply as possible before backtracking.</p>
+                    <p><strong>Principle:</strong> Uses a LIFO stack.</p>
+                    <p><strong>Advantages:</strong> Often uses less memory than BFS.</p>
+                    <p><strong>Limitations:</strong> May explore a long path and does not guarantee the shortest solution.</p>
+                    <p><strong>Completeness:</strong> Yes in a finite graph with visited-state checking.</p>
+                    <p><strong>Optimality:</strong> No.</p>
+                    <p><strong>Complexity:</strong> O(b<sup>m</sup>) time; O(bm) space for a tree-search implementation. Graph-search space can be larger.</p>
+                </article>
+            </div>
+
+            <div class="col-md-6">
+                <article class="algorithm-card">
+                    <span class="tag">Uninformed Search</span>
+                    <h2>Depth-Limited Search (DLS)</h2>
+                    <p>Performs DFS but stops exploring when a specified depth limit is reached.</p>
+                    <p><strong>Principle:</strong> DFS with a maximum depth.</p>
+                    <p><strong>Advantages:</strong> Prevents endless exploration down deep branches.</p>
+                    <p><strong>Limitations:</strong> May miss a solution beyond the limit.</p>
+                    <p><strong>Completeness:</strong> Only if the goal is within the limit.</p>
+                    <p><strong>Optimality:</strong> No.</p>
+                    <p><strong>Complexity:</strong> O(b<sup>l</sup>) time and O(bl) space.</p>
+                </article>
+            </div>
+
+            <div class="col-md-6">
+                <article class="algorithm-card">
+                    <span class="tag">Uninformed Search</span>
+                    <h2>Iterative Deepening DFS (IDDFS)</h2>
+                    <p>Repeatedly runs depth-limited search, increasing the depth limit each time.</p>
+                    <p><strong>Principle:</strong> Combines repeated depth limits with DFS.</p>
+                    <p><strong>Advantages:</strong> Finds shallow solutions with relatively low memory use.</p>
+                    <p><strong>Limitations:</strong> Repeats work at earlier depths.</p>
+                    <p><strong>Completeness:</strong> Yes for finite branching.</p>
+                    <p><strong>Optimality:</strong> Yes, for equal step costs.</p>
+                    <p><strong>Complexity:</strong> O(b<sup>d</sup>) time and O(bd) space.</p>
+                </article>
+            </div>
+
+            <div class="col-md-6">
+                <article class="algorithm-card">
+                    <span class="tag">Informed Search</span>
+                    <h2>Greedy Best-First Search (GBFS)</h2>
+                    <p>Expands the state that appears closest to the goal according to a heuristic.</p>
+                    <p><strong>Principle:</strong> Prioritizes h(n), the estimated distance to the goal.</p>
+                    <p><strong>Advantages:</strong> Can reach a promising state quickly.</p>
+                    <p><strong>Limitations:</strong> Can be misled by the heuristic and does not guarantee the shortest path.</p>
+                    <p><strong>Completeness:</strong> With graph-search duplicate checking in a finite state space, yes.</p>
+                    <p><strong>Optimality:</strong> No.</p>
+                    <p><strong>Complexity:</strong> Worst-case exponential time and space.</p>
+                </article>
+            </div>
+
+            <div class="col-md-6">
+                <article class="algorithm-card">
+                    <span class="tag">Informed Search</span>
+                    <h2>A* Search</h2>
+                    <p>Chooses states using both the cost so far and the estimated remaining cost.</p>
+                    <p><strong>Principle:</strong> f(n) = g(n) + h(n).</p>
+                    <p><strong>Advantages:</strong> Finds optimal solutions with an admissible heuristic and appropriate graph-search handling.</p>
+                    <p><strong>Limitations:</strong> Can consume substantial memory.</p>
+                    <p><strong>Completeness:</strong> Yes under standard finite-branching, positive-cost conditions.</p>
+                    <p><strong>Optimality:</strong> Yes with an admissible heuristic for tree search, or suitable consistency/reopening rules for graph search.</p>
+                    <p><strong>Complexity:</strong> Worst-case exponential time and space.</p>
+                </article>
+            </div>
+        </div>
+
+        <section>
+            <h2>Understanding the notation</h2>
+            <div class="algorithm-card">
+                <p><strong>b:</strong> Branching factor, or average number of successors per state.</p>
+                <p><strong>d:</strong> Depth of the shallowest goal.</p>
+                <p><strong>m:</strong> Maximum search depth.</p>
+                <p><strong>l:</strong> Depth limit used by DLS.</p>
+                <p><strong>g(n):</strong> Cost from the initial state to the current state.</p>
+                <p><strong>h(n):</strong> Estimated cost from the current state to the goal.</p>
+                <p class="mb-0"><strong>f(n):</strong> Estimated total solution cost in A*, calculated as g(n) + h(n).</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>AI 8-Puzzle Solver · Search Algorithm Reference</p>
+    </footer>
+</body>
+</html>

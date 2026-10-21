@@ -1,0 +1,120 @@
+
+:root {
+    --bg: #f5f5f0;
+    --surface: #ffffff;
+    --text: #20211f;
+    --muted: #686a66;
+    --accent: #4051b5;
+    --border: #dedfd7;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.navbar {
+    background: #20211f !important;
+    padding: 14px 5%;
+}
+
+.navbar-brand {
+    color: #ffffff !important;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: #eeeeee !important;
+}
+
+.nav-link:hover {
+    color: #c5ccff !important;
+}
+
+.hero {
+    padding: 80px 0;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    color: var(--muted);
+    max-width: 600px;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+section {
+    padding: 60px 0;
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    height: 100%;
+}
+
+.btn-primary {
+    background: var(--accent) !important;
+    border-color: var(--accent) !important;
+}
+
+.btn-primary:hover {
+    background: #303f98 !important;
+    border-color: #303f98 !important;
+}
+
+.btn-outline-primary {
+    color: var(--accent) !important;
+    border-color: var(--accent) !important;
+}
+
+.btn-outline-primary:hover {
+    background: var(--accent) !important;
+    color: #ffffff !important;
+}
+
+footer {
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 50px 0;
+    }
+
+    section {
+        padding: 40px 0;
+    }
+}
+
